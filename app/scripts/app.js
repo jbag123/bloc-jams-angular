@@ -6,7 +6,7 @@
                     requireBase: false
                 });
             $stateProvider
-                .state('landing', {
+            .state('landing', {
                     url: '/',
                     controller: 'LandingCtrl as landing',
                     templateUrl: '/templates/landing.html'
@@ -25,4 +25,6 @@
             angular
                 .module('blocJams', ['ui.router'])
                 .config(config);
-        })();
+})();
+
+//  IIFE - immediately invoked function expression
