@@ -43,6 +43,16 @@
                 }
 
                 /**
+                * @function stopSong
+                * @desc stops current buzz object and sets the playing property of the song object to false
+                * @param {Object} song
+                */
+                var stopSong = function(song) {
+                        currentBuzzObject.stop();
+                        song.playing = false;
+                }
+
+                /**
                 *@function getSongIndex
                 *@desc retrieve index of song
                 *@param {object} song
@@ -81,13 +91,12 @@
                 */
                 SongPlayer.pause = function(song) {
                         song = song || SongPlayer.currentSong;
-                        currentBuzzObject.pause();
-                        song.playing = false;
+                        stopSong(song);
                 };
 
                 /**
                 * @function SongPlayer.previous
-                * @desc move the song index back one place / if the song index is on the first song an goes back reset index to first song
+                * @desc move the song index back one place / if the song index is on the first song it goes back reset index to first song
                 * @param
                 */
                 SongPlayer.previous = function() {
@@ -99,6 +108,29 @@
                         currentSongIndex--;
 
                         if (currentSongIndex < 0) {
+                                currentBuzzObject.stop();
+                                SongPlayer.currentSong.playing = null;
+                        } else  {
+                                var song = currentAlbum.songs[currentSongIndex];
+                                setSong(song);
+                                playSong(song);
+                        }
+                };
+
+                /**
+                * @function SongPlayer.next
+                * @desc move the song index forward one place / if the song index is on the last song it goes back reset index to first song
+                * @param
+                */
+                SongPlayer.next = function() {
+                        /**
+                        * @desc retrieve current song index
+                        * @type {Object}
+                        */
+                        var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+                        currentSongIndex++;
+
+                        if (currentSongIndex > currentAlbum.songs.length - 1) {
                                 currentBuzzObject.stop();
                                 SongPlayer.currentSong.playing = null;
                         } else  {
