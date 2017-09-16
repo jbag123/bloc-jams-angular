@@ -68,6 +68,12 @@
                 SongPlayer.currentSong = null;
 
                 /**
+                *@desc Current playback time (in seconds) of currently playing song
+                *@type {Number}
+                */
+                SongPlayer.currentTime = null;
+
+                /**
                 * @function SongPlayer.play
                 * @desc if the current song is not the on clicked on set and play the song else if it is the one clicked on and buss object is paused play the song
                 * @param {Object} song
@@ -80,7 +86,7 @@
                         } else if (SongPlayer.currentSong === song) {
                                 if (currentBuzzObject.isPaused()) {
                                         playSong(song);
-                                } 
+                                }
                         }
                 };
 
@@ -123,21 +129,31 @@
                 * @param
                 */
                 SongPlayer.next = function() {
-                        /**
-                        * @desc retrieve current song index
-                        * @type {Object}
-                        */
-                        var currentSongIndex = getSongIndex(SongPlayer.currentSong);
-                        currentSongIndex++;
+                /**
+                * @desc retrieve current song index
+                * @type {Object}
+                */
+                var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+                currentSongIndex++;
 
-                        if (currentSongIndex > currentAlbum.songs.length - 1) {
-                                currentBuzzObject.stop();
-                                SongPlayer.currentSong.playing = null;
-                        } else  {
-                                var song = currentAlbum.songs[currentSongIndex];
-                                setSong(song);
-                                playSong(song);
-                        }
+                if (currentSongIndex > currentAlbum.songs.length - 1) {
+                        currentBuzzObject.stop();
+                        SongPlayer.currentSong.playing = null;
+                } else  {
+                        var song = currentAlbum.songs[currentSongIndex];
+                        setSong(song);
+                        playSong(song);
+                }
+                };
+                /**
+                * @function setCurrentTime
+                * @desc Set current time (in seconds) of currently playing song
+                * @param {Number} time
+                */
+                SongPlayer.setCurrentTime = function(time) {
+                    if (currentBuzzObject) {
+                        currentBuzzObject.setTime(time);
+                    }
                 };
 
                 return SongPlayer;
