@@ -27,7 +27,7 @@
                         });
 
                         attributes.$observe('max', function(newValue) {
-                                scope.value = newValue;
+                                scope.max = newValue;
                         });
 
                         var percentString = function () {
@@ -42,7 +42,7 @@
                         };
 
                         scope.thumbStyle = function() {
-                            return {width: percentString()};
+                            return {left: percentString()};
                         };
 
                         scope.onClickSeekBar = function(event) {
