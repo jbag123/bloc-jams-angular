@@ -74,6 +74,23 @@
                 SongPlayer.currentSong = null;
 
                 /**
+                * @desc An attribute that holds the volume value
+                * @type {Number}
+                */
+                SongPlayer.volume = 80;
+
+                /**
+                *@function SongPlayer.setVolume
+                *@desc set volume of song on volume thimb change
+                *@param
+                */
+                SongPlayer.setVolume = function(volume) {
+                        if (currentBuzzObject) {
+                            currentBuzzObject.setVolume(volume);
+                        }
+                };
+
+                /**
                 *@desc Current playback time (in seconds) of currently playing song
                 *@type {Number}
                 */
@@ -151,6 +168,7 @@
                         playSong(song);
                 }
                 };
+
                 /**
                 * @function setCurrentTime
                 * @desc Set current time (in seconds) of currently playing song
