@@ -35,6 +35,12 @@
                             });
                     });
 
+                    currentBuzzObject.bind('ended', function() {
+                        $rootScope.$apply(function() {
+                            SongPlayer.next();
+                        });
+                });
+                        
                     SongPlayer.currentSong = song;
                 };
 
@@ -168,6 +174,17 @@
                         playSong(song);
                 }
                 };
+
+                /**
+                * @function SongPlayer.nextSong
+                * @desc move to the next song if the current one is finished
+                * @param
+                */
+                SongPlayer.nextSong = function() {
+                        if (SongPlayer.currentTime > currentAlbum.songs.duration) {
+                                next();
+                        }
+                }
 
                 /**
                 * @function setCurrentTime
