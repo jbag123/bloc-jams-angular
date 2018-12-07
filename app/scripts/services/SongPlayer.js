@@ -3,8 +3,8 @@
                 var SongPlayer = {};
 
                 /**
-                *@desc stores album information in the currentAlbum variable
-                *@type {object}
+                * @desc stores album information in the currentAlbum variable
+                * @type {object}
                 */
                 var currentAlbum = Fixtures.getAlbum();
 
@@ -30,17 +30,17 @@
                     });
 
                     currentBuzzObject.bind('timeupdate', function() {
-                            $rootScope.$apply(function() {
-                                    SongPlayer.currentTime = currentBuzzObject.getTime();
-                            });
+                        $rootScope.$apply(function() {
+                                SongPlayer.currentTime = currentBuzzObject.getTime();
+                        });
                     });
 
                     currentBuzzObject.bind('ended', function() {
                         $rootScope.$apply(function() {
                             SongPlayer.next();
                         });
-                });
-                        
+                    });
+
                     SongPlayer.currentSong = song;
                 };
 
