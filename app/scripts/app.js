@@ -6,25 +6,23 @@
                     requireBase: false
                 });
             $stateProvider
-            .state('landing', {
+                .state('landing', {
                     url: '/',
                     controller: 'LandingCtrl as landing',
                     templateUrl: '/templates/landing.html'
-            })
-            .state('album', {
-                url: '/album',
-                controller: 'AlbumCtrl as album',
-                templateUrl: '/templates/album.html'
-            })
-            .state('collection', {
+                })
+                .state('album', {
+                    url: '/album?slug',
+                    controller: 'AlbumCtrl as album',
+                    templateUrl: '/templates/album.html'
+                })
+                .state('collection', {
                     url: '/collection',
                     controller: 'CollectionCtrl as collection',
                     templateUrl: '/templates/collection.html'
-            });
+                });
 }
             angular
                 .module('blocJams', ['ui.router'])
                 .config(config);
 })();
-
-//  IIFE - immediately invoked function expression

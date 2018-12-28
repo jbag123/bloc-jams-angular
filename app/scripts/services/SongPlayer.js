@@ -31,7 +31,7 @@
 
                     currentBuzzObject.bind('timeupdate', function() {
                         $rootScope.$apply(function() {
-                                SongPlayer.currentTime = currentBuzzObject.getTime();
+                          SongPlayer.currentTime = currentBuzzObject.getTime();
                         });
                     });
 
@@ -104,7 +104,7 @@
 
                 /**
                 * @function SongPlayer.play
-                * @desc if the current song is not the on clicked on set and play the song else if it is the one clicked on and buss object is paused play the song
+                * @desc if the current song is not the one clicked on set and play the song else if it is the one clicked on and buzz object is paused play the song
                 * @param {Object} song
                 */
                 SongPlayer.play = function(song) {

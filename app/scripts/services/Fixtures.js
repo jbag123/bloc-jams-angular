@@ -3,6 +3,7 @@
                 var Fixtures = {};
                 var albumPicasso = {
                         title: 'The Colors',
+                        slug: 'the-colors',
                         artist: 'Pablo Picasso',
                         label: 'Cubism',
                         year: '1881',
@@ -17,6 +18,7 @@
                 };
                 var albumMarconi = {
                         title: 'The Telephone',
+                        slug: 'the-telephone',
                         artist: 'Guglielmo Marconi',
                         label: 'EM',
                         year: '1909',
@@ -31,7 +33,6 @@
                 };
                 Fixtures.getAlbum = function() {
                         return albumPicasso;
-                        return albumMarconi;
                 };
                 Fixtures.getCollection = function(numberOfAlbums) {
                         var array = [];
